@@ -7,11 +7,7 @@ const baseSchema = z.object({
     required_error: "Required frontmatter missing: title",
     invalid_type_error: "title must be a string",
   }),
-  date: z.date({
-    required_error: "Required frontmatter missing: date",
-    invalid_type_error:
-      "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
-  }),
+  description: z.optional(z.string()),
 });
 
 /*
@@ -27,9 +23,13 @@ export const blog = z.discriminatedUnion("external", [
   // markdown
   baseSchema.extend({
     external: z.literal(false),
-    description: z.optional(z.string()),
     ogImagePath: z.optional(z.string()),
     canonicalUrl: z.optional(z.string()),
+    date: z.date({
+      required_error: "Required frontmatter missing: date",
+      invalid_type_error:
+        "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+    }),
   }),
   // external link
   baseSchema.extend({
@@ -39,9 +39,24 @@ export const blog = z.discriminatedUnion("external", [
         "external is true but url is missing. url must be set for posts marked as external.",
       invalid_type_error: "external should be string.",
     }),
+    date: z.date({
+      required_error: "Required frontmatter missing: date",
+      invalid_type_error:
+        "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+    }),
   }),
 ]);
 
 export const project = baseSchema.extend({
   url: z.string(),
+  startDate: z.date({
+    required_error: "Required frontmatter missing: date",
+    invalid_type_error:
+      "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+  }),
+  endDate: z.date({
+    required_error: "Required frontmatter missing: date",
+    invalid_type_error:
+      "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
+  }),
 });
