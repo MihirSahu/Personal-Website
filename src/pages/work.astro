@@ -31,10 +31,10 @@ const sortedProjects = projects
           ).toLocaleDateString("en-us", {
             year: "numeric",
             month: "short",
-            day: "numeric",
+            // day: "numeric",
           });
           let formattedEndDate;
-          if ((project.frontmatter.endDate).toISOString() === new Date("2000-01-01").toISOString()) {
+          if ((project.frontmatter.endDate).toISOString() === new Date("2077-01-01").toISOString()) {
             formattedEndDate = "Present";
           }
           else {
@@ -43,23 +43,22 @@ const sortedProjects = projects
             ).toLocaleDateString("en-us", {
               year: "numeric",
               month: "short",
-              day: "numeric",
+              // day: "numeric",
             });
           }
+
           return (
             <li class="project">
               <div class="subtext">
-                <span>{project.frontmatter.title}</span>
-                {/*
-                  <a href={project.frontmatter.url} target="_blank">
-                    <ExternalLinkIcon
-                      class="icon-realign"
-                      title="Link to project"
-                      height={16}
-                      width={16}
-                    />
-                  </a>
-                 */}
+                <a href={project.frontmatter.url} target="_blank">
+                  <span>{project.frontmatter.title}</span>
+                  <ExternalLinkIcon
+                    class="icon-realign"
+                    title="Link to external post"
+                    height={16}
+                    width={16}
+                  />
+                </a>
               </div>
               <div class="publish-date">
                 <time datetime={project.frontmatter.startDate.toISOString()}>
@@ -70,8 +69,8 @@ const sortedProjects = projects
                   {formattedEndDate}
                 </time>
               </div>
-              <div class="description">{project.frontmatter.description}</div>
             </li>
+            <div class="description">{project.frontmatter.description}</div>
           );
         })
       }
@@ -102,13 +101,15 @@ const sortedProjects = projects
     padding-top: 0.5rem;
   }
 
-  .title a {
+  .subtext a {
     color: var(--text);
     border-bottom: none;
+    text-decoration: none;
   }
 
-  .title a:hover {
+  .subtext a:hover {
     color: var(--text-link);
+    text-decoration: none;
   }
 
   .subtext {
@@ -116,10 +117,11 @@ const sortedProjects = projects
     font-size: 1.25rem;
     letter-spacing: -0.51px;
     line-height: 2rem;
+    text-decoration: none;
   }
   
   .description {
-
+    padding-left: .5rem;
   }
 
   .icon-realign {
