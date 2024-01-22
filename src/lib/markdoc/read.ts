@@ -46,9 +46,11 @@ function validateFrontmatter<T extends z.ZodTypeAny>({
 export async function read<T extends z.ZodTypeAny>({
   filepath,
   schema,
+  type,
 }: {
   filepath: string;
   schema: T;
+  type: string;
 }) {
   const rawString = await fs.readFile(filepath, "utf8");
   const { content, data: frontmatter } = matter(rawString);
@@ -67,7 +69,7 @@ export async function read<T extends z.ZodTypeAny>({
 
   return {
     slug: fileNameWithoutExtension,
-    content: Markdoc.renderers.html(transformedContent),
+    content: type === "blog" ? transformedContent : Markdoc.renderers.html(transformedContent),
     frontmatter: validatedFrontmatter,
   };
 }
@@ -85,18 +87,21 @@ export async function readOne<T extends z.ZodTypeAny>({
   return read({
     filepath,
     schema,
+    type: "blog",
   });
 }
 
 export async function readAll<T extends z.ZodTypeAny>({
   directory,
   frontmatterSchema: schema,
+  type,
 }: {
   directory: string;
   frontmatterSchema: T;
+  type: string;
 }) {
   const pathToDir = path.posix.join(contentDirectory, directory);
   const paths = await globby(`${pathToDir}/*.md`);
 
-  return Promise.all(paths.map((path) => read({ filepath: path, schema })));
+  return Promise.all(paths.map((path) => read({ filepath: path, schema, type })));
 }

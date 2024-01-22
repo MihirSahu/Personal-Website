@@ -7,6 +7,7 @@ export const get = async () => {
   const posts = await readAll({
     directory: "blog",
     frontmatterSchema: blog,
+    type: "newsletter",
   });
 
   const sortedPosts = posts
