@@ -29,7 +29,7 @@ const sortedPosts = posts
 <PageLayout>
   <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
-    <div>Read my posts from your inbox!</div>
+    <div class="subtext">Read my posts from your inbox!</div>
     <a
       id="subscribe"
       class:list={[
@@ -187,5 +187,13 @@ const sortedPosts = posts
     color: var(--text-muted);
     font-size: 0.875rem;
     font-style: italic;
+  }
+
+  .subtext {
+    color: var(--text-heading);
+    font-size: 1.25rem;
+    letter-spacing: -0.51px;
+    line-height: 2rem;
+    margin-top: 0.5rem;
   }
 </style>
