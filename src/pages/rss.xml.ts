@@ -22,7 +22,7 @@ export const get = async () => {
   // https://example.com/ => https://example.com
   baseUrl = baseUrl.replace(/\/+$/g, "");
 
-  const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
+  const rssItems = sortedPosts.map(({ content, frontmatter, slug }) => {
     if (frontmatter.external) {
       const title = frontmatter.title;
       const pubDate = frontmatter.date;
@@ -45,6 +45,7 @@ export const get = async () => {
       pubDate,
       description,
       link,
+      content,
     };
   });
 
