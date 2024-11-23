@@ -76,9 +76,11 @@ nav {
   transition: all 0.5s ease-in-out;
 }
 
+/*
 .hover-expand:hover {
   color: black;
 }
+*/
 
 .hover-expand:hover .expand-text {
   max-width: 100%;
@@ -92,18 +94,23 @@ a {
 h1 {
   font-family: ui-serif,Georgia,Cambria,Times New Roman,Times,serif;
   font-weight: 100;
-  color: black;
+  /*color: black;*/
 }
-
-/*
-opacity: var(--text-opacity);
-filter: contrast(--text-contrast);
-*/
 
 .links {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.thoughts {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
 footer {
