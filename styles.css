@@ -8,7 +8,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 
   padding-top: 30px;
   margin: 0;
@@ -36,7 +36,6 @@ html {
 }
 
 body {
-  height: 100%;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -50,7 +49,7 @@ header {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   align-items: center;
 }
 
@@ -61,8 +60,32 @@ nav {
   justify-content: space-between;
 }
 
-a { 
+.hover-expand {
   text-decoration: none;
+  display: inline-block;
+  color: #737373;
+  transition: color 0.3s ease-in-out;
+}
+
+.expand-text {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+  transition: all 0.5s ease-in-out;
+}
+
+.hover-expand:hover {
+  color: black;
+}
+
+.hover-expand:hover .expand-text {
+  max-width: 100%;
+}
+
+a { 
+  /*text-decoration: none;*/
   color: #737373;
 }
 
@@ -88,13 +111,18 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 8vh;
+  height: 7vh;
   width: 100vw;
 
   background-color: #f5f5f5;
   color: rgb(115 115 115/1);
 
   font-size: 0.75rem;
+}
+
+.placeholder {
+  height: 7vh;
+  width: 100vw;
 }
 
 .footer-text {
@@ -111,7 +139,16 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 75%;
+  }
+
+  body {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .footer-text {
@@ -119,7 +156,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 75%;
   }
 }
 
