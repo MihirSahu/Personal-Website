@@ -45,12 +45,12 @@ body {
   /*overflow: hidden;*/
 }
 
-header {
+.page {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
-  align-items: center;
+  justify-content: space-between;
 }
 
 .pfp-link {
@@ -132,6 +132,24 @@ h1, h2, h3 {
 
 .links a {
   text-decoration: none;
+}
+
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-top: 10%;
+  margin-bottom: 8%;
+  line-height: 1;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .thoughts, .work {
