@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import ProfileImage from "./components/ProfileImage";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Mihir's Blog",
@@ -34,21 +35,21 @@ export default function RootLayout({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/twitter.svg" alt="Twitter" />
+              <Image height={30} width={30} src="/twitter.svg" alt="Twitter" />
             </Link>
             <Link
               href="https://www.linkedin.com/in/the-mihir-sahu/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/linkedin.svg" alt="LinkedIn" />
+              <Image height={30} width={30} src="/linkedin.svg" alt="LinkedIn" />
             </Link>
             <Link
               href="mailto:mihir@mihirsahu.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/mail.svg" alt="Email" />
+              <Image height={30} width={30} src="/mail.svg" alt="Email" />
             </Link>
           </div>
         </div>
